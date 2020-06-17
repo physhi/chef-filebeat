@@ -81,6 +81,11 @@ action :create do
       not_if { ::File.exist?(new_resource.conf_dir + '/install-service-filebeat.ps1') }
       notifies :run, 'powershell_script[install filebeat as service]', :immediately
     end
+    
+    powershell_script 'Unzip filelogbeat' do
+      code "Expand-Archive '#{package_file}' '#{new_resource.windows_base_dir}'"
+      not_if { ::File.exist?(new_resource.conf_dir + '/install-service-filebeat.ps1') }
+    end
 
     powershell_script 'install filebeat as service' do
       code "& '#{new_resource.conf_dir}/install-service-filebeat.ps1'"
