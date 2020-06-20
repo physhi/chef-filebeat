@@ -74,14 +74,7 @@ action :create do
       recursive true
       action :create
     end
-
-    windows_zipfile new_resource.windows_base_dir do
-      source package_file
-      action :unzip
-      not_if { ::File.exist?(new_resource.conf_dir + '/install-service-filebeat.ps1') }
-      notifies :run, 'powershell_script[install filebeat as service]', :immediately
-    end
-    
+   
     powershell_script 'Unzip filelogbeat' do
       code "Expand-Archive '#{package_file}' '#{new_resource.windows_base_dir}'"
       not_if { ::File.exist?(new_resource.conf_dir + '/install-service-filebeat.ps1') }
