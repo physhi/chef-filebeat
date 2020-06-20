@@ -82,7 +82,6 @@ action :create do
 
     powershell_script 'install filebeat as service' do
       code "& '#{new_resource.conf_dir}/install-service-filebeat.ps1'"
-      action :nothing
     end
   end
 
