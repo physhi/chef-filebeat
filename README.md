@@ -1,5 +1,6 @@
 filebeat Cookbook
 ================
+Primary reason for the fork is to be able to chef-*beat cookbooks on headless windows.
 
 [![Cookbook](https://img.shields.io/github/tag/vkhatri/chef-filebeat.svg)](https://github.com/vkhatri/chef-filebeat) [![Build Status](https://travis-ci.org/vkhatri/chef-filebeat.svg?branch=master)](https://travis-ci.org/vkhatri/chef-filebeat)
 
