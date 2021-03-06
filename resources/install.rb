@@ -74,11 +74,15 @@ action :create do
       recursive true
       action :create
     end
+
+    log new_resource.windows_base_dir do
+      level :info
+    end
    
     powershell_script 'Unzip filelogbeat' do
       code <<-EOH
-        "Expand-Archive '#{package_file}' '#{new_resource.windows_base_dir}'"
-        "&'#{new_resource.conf_dir}/install-service-filebeat.ps1'"
+        Expand-Archive '#{package_file}' '#{new_resource.windows_base_dir}'
+        &'#{new_resource.conf_dir}/install-service-filebeat.ps1'
       EOH
       not_if { ::File.exist?(new_resource.conf_dir + '/install-service-filebeat.ps1') }
     end
