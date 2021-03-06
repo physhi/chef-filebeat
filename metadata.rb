@@ -6,7 +6,7 @@ description 'Installs/Configures Elastic Filebeat'
 version '2.4.4'
 source_url 'https://github.com/vkhatri/chef-filebeat'
 issues_url 'https://github.com/vkhatri/chef-filebeat/issues'
-chef_version '>= 12.14'
+chef_version '>= 12.15'
 
 depends 'homebrew', '~> 4.2'
 depends 'elastic_repo', '>= 1.2.0'
